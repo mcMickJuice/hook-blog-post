@@ -7,7 +7,6 @@ interface UserSearchWithHocProps {
 	errorMessage?: string
 	searchResult?: UserInfo
 	onSearch: (userId: string) => void
-	initialValue?: string
 }
 
 interface UserSearchWithHocState {
