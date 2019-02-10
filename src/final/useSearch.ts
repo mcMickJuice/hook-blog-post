@@ -1,5 +1,6 @@
 import { useReducer } from 'react'
-import { getUserInfoById, UserInfo } from './user-service'
+import { getUserInfoById } from '../user-service'
+import { UserInfo } from '../users'
 
 enum SearchActionType {
 	Initial = 'Initial',
