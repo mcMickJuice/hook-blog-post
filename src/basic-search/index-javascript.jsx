@@ -1,27 +1,24 @@
 import React from 'react'
-import { UserInfo } from '../users'
 import { getUserInfoById } from '../user-service'
 
-interface UserSearchState {
-	isLoading: boolean
-	errorMessage?: string
-	searchResult?: UserInfo
-	searchTerm: string
-}
+class UserSearch extends React.Component {
+	constructor(props) {
+		super(props)
 
-class UserSearch extends React.Component<{}, UserSearchState> {
-	state: UserSearchState = {
-		isLoading: false,
-		searchTerm: ''
+		this.state = {
+			isLoading: false,
+			searchTerm: ''
+		}
 	}
-	handleSearchChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+
+	handleSearchChange = evt => {
 		this.setState({
 			searchTerm: evt.currentTarget.value,
 			errorMessage: undefined
 		})
 	}
 
-	handleSearchSubmit = (evt: React.FormEvent) => {
+	handleSearchSubmit = evt => {
 		const { searchTerm } = this.state
 		evt.preventDefault()
 
