@@ -35,7 +35,7 @@ interface SearchActionState {
 	searchResult?: UserInfo
 }
 
-const zidSearchReducer = (
+const searchReducer = (
 	initialState: SearchActionState,
 	action: Action
 ): SearchActionState => {
@@ -63,27 +63,27 @@ const useSearch = (): [
 	boolean | undefined,
 	string | undefined,
 	(UserInfo | undefined),
-	(zid: string) => Promise<void>,
+	(userId: string) => Promise<void>,
 	() => void
 ] => {
-	const [zidState, dispatch] = useReducer(zidSearchReducer, {})
+	const [searchState, dispatch] = useReducer(searchReducer, {})
 
 	function resetErrorState() {
 		dispatch({ type: SearchActionType.Initial })
 	}
 
-	async function search(zid: string) {
+	async function search(userId: string) {
 		dispatch({ type: SearchActionType.Search })
 
 		try {
-			const result = await getUserInfoById(zid)
+			const result = await getUserInfoById(userId)
 			dispatch({ type: SearchActionType.Success, result })
 		} catch (e) {
 			dispatch({ type: SearchActionType.Error, error: e.message })
 		}
 	}
 
-	const { isLoading, searchResult, error } = zidState
+	const { isLoading, searchResult, error } = searchState
 
 	return [isLoading, error, searchResult, search, resetErrorState]
 }

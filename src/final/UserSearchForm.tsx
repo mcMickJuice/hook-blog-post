@@ -1,42 +1,32 @@
 import React, { FormEvent } from 'react'
-import useZidSearch from './useSearch'
-
-// const styles = {
-// 	root: {
-// 		padding: '16px'
-// 	},
-// 	form: {
-// 		display: 'flex',
-// 		'&>*:first-child': {
-// 			marginRight: '8px'
-// 		},
-// 		marginBottom: '16px'
-// 	}
-// }
+import useSearch from './useSearch'
 
 const UserSearchForm = () => {
-	const [zid, updateZid] = React.useState('')
-	const [isLoading, error, searchResult, searchZid, reset] = useZidSearch()
+	const [userId, updateUserId] = React.useState('')
+	const [isLoading, error, searchResult, searchUserId, reset] = useSearch()
 
 	return (
 		<div>
 			<form
 				onSubmit={(evt: FormEvent) => {
 					evt.preventDefault()
-					searchZid(zid)
+					searchUserId(userId)
 				}}
 			>
 				<div>
 					<label htmlFor="user-id">User ID</label>
 					<input
 						type="text"
-						value={zid}
+						value={userId}
 						onChange={evt => {
-							updateZid(evt.currentTarget.value)
+							updateUserId(evt.currentTarget.value)
 							reset()
 						}}
 					/>
-					<button disabled={zid.length === 0} onClick={() => searchZid(zid)}>
+					<button
+						disabled={userId.length === 0}
+						onClick={() => searchUserId(userId)}
+					>
 						Search
 					</button>
 				</div>
@@ -45,7 +35,7 @@ const UserSearchForm = () => {
 				{isLoading ? <div>Loading...</div> : null}
 				{error != null ? (
 					<div>
-						Error searching for {zid}: {error}
+						Error searching for {userId}: {error}
 					</div>
 				) : null}
 				{searchResult != null ? (
