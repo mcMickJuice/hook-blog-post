@@ -1,6 +1,6 @@
 import React from 'react'
-import { UserInfo } from '../users'
-import { getUserInfoById } from '../user-service'
+import { UserInfo } from '../../users'
+import { getUserInfoById } from '../../user-service'
 
 interface UserSearchHocState {
 	isLoading: boolean

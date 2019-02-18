@@ -3,7 +3,7 @@ import './App.css'
 // import FinalPage from './final'
 // import BasicSearch from './basic-search'
 // import UserSearchHoc from './search-hoc'
-import UserSearchRenderProp from './search-render-prop'
+// import UserSearchRenderProp from './search-render-prop'
 class App extends Component {
 	render() {
 		return (
@@ -11,7 +11,7 @@ class App extends Component {
 				{/* <FinalPage /> */}
 				{/* <BasicSearch /> */}
 				{/* <UserSearchHoc /> */}
-				<UserSearchRenderProp />
+				{/* <UserSearchRenderProp /> */}
 			</div>
 		)
 	}

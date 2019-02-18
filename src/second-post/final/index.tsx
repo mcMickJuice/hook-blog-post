@@ -1,6 +1,6 @@
 import React from 'react'
 import UserSearchForm from './UserSearchForm'
-import { users } from '../users'
+import { users } from '../../users'
 import UserDisplay from './UserDisplay'
 
 const FinalPage = () => {

@@ -1,5 +1,4 @@
 import React from 'react'
-import { UserInfo } from '../users'
 import UserSearch from './UserSearch'
 
 interface UserSearchWithRenderPropState {

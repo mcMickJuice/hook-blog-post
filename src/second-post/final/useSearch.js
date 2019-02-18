@@ -1,8 +1,8 @@
-import { useReducer } from 'react'
-import { getUserInfoById } from '../user-service'
+import React from 'react'
+import { getUserInfoById } from '../../user-service'
 
 const useSearch = () => {
-	const [searchState, dispatch] = useReducer(searchReducer, {})
+	const [searchState, dispatch] = React.useReducer(searchReducer, {})
 
 	function resetErrorState() {
 		dispatch({ type: 'Initial' })
