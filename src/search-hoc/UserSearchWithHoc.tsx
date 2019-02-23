@@ -1,23 +1,29 @@
 import React from 'react'
-import { UserInfo } from '../../users'
-import { getUserInfoById } from '../../user-service'
+import { UserInfo } from '../users'
+import userSearchHoc from './UserSearchHoc'
 
-interface UserSearchState {
+interface UserSearchWithHocProps {
 	isLoading: boolean
 	errorMessage?: string
 	searchResult?: UserInfo
+	onSearch: (userId: string) => void
+}
+
+interface UserSearchWithHocState {
 	searchTerm: string
 }
 
-class UserSearch extends React.Component<{}, UserSearchState> {
-	state: UserSearchState = {
-		isLoading: false,
+class UserSearchWithHoc extends React.Component<
+	UserSearchWithHocProps,
+	UserSearchWithHocState
+> {
+	state: UserSearchWithHocState = {
 		searchTerm: ''
 	}
+
 	handleSearchChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
 		this.setState({
-			searchTerm: evt.currentTarget.value,
-			errorMessage: undefined
+			searchTerm: evt.currentTarget.value
 		})
 	}
 
@@ -25,31 +31,15 @@ class UserSearch extends React.Component<{}, UserSearchState> {
 		const { searchTerm } = this.state
 		evt.preventDefault()
 
-		this.setState({
-			isLoading: true,
-			searchResult: undefined
-		})
-
-		getUserInfoById(searchTerm)
-			.then(userInfo => {
-				this.setState({
-					searchResult: userInfo,
-					isLoading: false
-				})
-			})
-			.catch(err => {
-				this.setState({
-					errorMessage: err.message,
-					isLoading: false
-				})
-			})
+		this.props.onSearch(searchTerm)
 	}
 
 	render() {
-		const { searchTerm, isLoading, errorMessage, searchResult } = this.state
+		const { isLoading, errorMessage, searchResult } = this.props
+		const { searchTerm } = this.state
 		return (
 			<div>
-				<h2>Basic Search State</h2>
+				<h2>Search Form with HOC</h2>
 				<div>
 					<form onSubmit={this.handleSearchSubmit}>
 						<div>
@@ -90,4 +80,4 @@ class UserSearch extends React.Component<{}, UserSearchState> {
 	}
 }
 
-export default UserSearch
+export default userSearchHoc(UserSearchWithHoc)

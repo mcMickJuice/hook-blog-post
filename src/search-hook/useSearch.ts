@@ -1,6 +1,6 @@
 import { useReducer } from 'react'
-import { getUserInfoById } from '../../user-service'
-import { UserInfo } from '../../users'
+import { getUserInfoById } from '../user-service'
+import { UserInfo } from '../users'
 
 const useSearch = (): [
 	boolean | undefined,

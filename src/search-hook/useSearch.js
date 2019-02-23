@@ -1,5 +1,5 @@
 import React from 'react'
-import { getUserInfoById } from '../../user-service'
+import { getUserInfoById } from '../user-service'
 
 const useSearch = () => {
 	const [searchState, dispatch] = React.useReducer(searchReducer, {})

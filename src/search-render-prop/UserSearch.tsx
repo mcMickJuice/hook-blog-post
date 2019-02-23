@@ -1,12 +1,33 @@
 import React from 'react'
-import { getUserInfoById } from '../../user-service'
+import { UserInfo } from '../users'
+import { getUserInfoById } from '../user-service'
 
-class UserSearch extends React.Component {
-	state = {
+interface UserSearchProps {
+	children: ({
+		isLoading,
+		errorMessage,
+		searchResult,
+		onSearch
+	}: {
+		isLoading: boolean
+		errorMessage?: string
+		searchResult?: UserInfo
+		onSearch: (userId: string) => void
+	}) => React.ReactElement<any, any>
+}
+
+interface UserSearchState {
+	isLoading: boolean
+	errorMessage?: string
+	searchResult?: UserInfo
+}
+
+class UserSearch extends React.Component<UserSearchProps, UserSearchState> {
+	state: UserSearchState = {
 		isLoading: false
 	}
 
-	handleSubmit = userId => {
+	handleSubmit = (userId: string) => {
 		this.setState({
 			isLoading: true,
 			searchResult: undefined
