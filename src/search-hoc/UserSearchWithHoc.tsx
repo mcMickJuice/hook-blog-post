@@ -39,41 +39,38 @@ class UserSearchWithHoc extends React.Component<
 		const { searchTerm } = this.state
 		return (
 			<div>
-				<h2>Search Form with HOC</h2>
-				<div>
-					<form onSubmit={this.handleSearchSubmit}>
-						<div>
-							<label htmlFor="user-id">User ID</label>
-							<input
-								type="text"
-								value={searchTerm}
-								onChange={this.handleSearchChange}
-							/>
-							<button
-								disabled={searchTerm.length === 0}
-								onClick={this.handleSearchSubmit}
-							>
-								Search
-							</button>
-						</div>
-					</form>
+				<form onSubmit={this.handleSearchSubmit}>
 					<div>
-						{isLoading ? <div>Loading...</div> : null}
-						{errorMessage != null ? (
-							<div>
-								Error searching for {searchTerm}: {errorMessage}
-							</div>
-						) : null}
-						{searchResult != null ? (
-							<div>
-								<h2>User Info</h2>
-								<div>
-									{searchResult.firstName} {searchResult.lastName}
-								</div>
-								<div>{searchResult.email}</div>
-							</div>
-						) : null}
+						<label htmlFor="user-id">User ID</label>
+						<input
+							type="text"
+							value={searchTerm}
+							onChange={this.handleSearchChange}
+						/>
+						<button
+							disabled={searchTerm.length === 0}
+							onClick={this.handleSearchSubmit}
+						>
+							Search
+						</button>
 					</div>
+				</form>
+				<div>
+					{isLoading ? <div>Loading...</div> : null}
+					{errorMessage != null ? (
+						<div>
+							Error searching for {searchTerm}: {errorMessage}
+						</div>
+					) : null}
+					{searchResult != null ? (
+						<div>
+							<h2>User Info</h2>
+							<div>
+								{searchResult.firstName} {searchResult.lastName}
+							</div>
+							<div>{searchResult.email}</div>
+						</div>
+					) : null}
 				</div>
 			</div>
 		)
