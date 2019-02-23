@@ -1,6 +1,6 @@
 import React from 'react'
 import { UserInfo } from '../../users'
-import userSearchHoc from './user-search-hoc'
+import userSearchHoc from './UserSearchHoc'
 
 interface UserSearchWithHocProps {
 	isLoading: boolean
