@@ -1,17 +1,28 @@
 import React, { Component } from 'react'
 import './App.css'
-// import FinalPage from './final'
-// import BasicSearch from './basic-search'
-// import UserSearchHoc from './search-hoc'
-// import UserSearchRenderProp from './search-render-prop'
+import BasicSearch from './basic-search/BasicSearch'
+
 class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				{/* <FinalPage /> */}
-				{/* <BasicSearch /> */}
-				{/* <UserSearchHoc /> */}
-				{/* <UserSearchRenderProp /> */}
+				<div>
+					<h2>Search with Component</h2>
+					<BasicSearch />
+				</div>
+				<div>
+					<h2>Search Form with Hooks</h2>
+				</div>
+				<div>
+					<h2>Search Form with HOC</h2>
+				</div>
+
+				<div>
+					<h2>Search Form with Render Props</h2>
+				</div>
+				<div>
+					<h2>User Info Render with Hook</h2>
+				</div>
 			</div>
 		)
 	}
